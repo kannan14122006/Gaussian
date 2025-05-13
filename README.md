@@ -1,4 +1,4 @@
-# Gaussian Elimination
+ # Gaussian Elimination
 
 ## AIM:
 To write a program to find the solution of a matrix using Gaussian Elimination.
@@ -17,7 +17,7 @@ To write a program to find the solution of a matrix using Gaussian Elimination.
 ```
 /*
 Program to find the solution of a matrix using Gaussian Elimination.
-Developed by: 
+Developed by:  
 RegisterNumber: 
 */
 ```
