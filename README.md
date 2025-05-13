@@ -1,4 +1,4 @@
- # Gaussian Elimination
+# Gaussian Elimination
 
 ## AIM:
 To write a program to find the solution of a matrix using Gaussian Elimination.
@@ -8,66 +8,62 @@ To write a program to find the solution of a matrix using Gaussian Elimination.
 2. Anaconda – Python 3.7 Installation / Moodle-Code Runner
 
 ## Algorithm
-### Step 1: Start the Program.
+1. Import the required libraries numpy and sys.
 
-### Step 2: Import required libraries:
+2. Input the size of the matrix n and define augmented matrix a as a NumPy array of size (n, n+1). Initialize the solution array x as a NumPy array of size n.
 
-numpy for array handling.
+3. Perform forward elimination to transform the augmented matrix into an upper triangular form:
 
-sys to exit the program in case of divide-by-zero.
+.For each pivot row, ensure the pivot element is non-zero.
+.Subtract multiples of the pivot row from the rows below to eliminate the elements below the pivot.
 
-### Step 3: Input the Size and Augmented Matrix
-Read the number of unknowns n.
 
-Create an augmented matrix a of size n × (n+1) and a solution vector X of size n.
+4. Perform backward substitution to compute the solution:
 
-Take user input to fill the augmented matrix a.
+Start with the last variable and substitute back into the equations to find the remaining variables
 
-### Step 4:  Forward Elimination 
+5. Display the solution values of all variables using formatted output.
 
-For each pivot row i, check for divide-by-zero.
+6.Verify the results for correctness.
 
-For all rows below i, compute the ratio a[j][i]/a[i][i] and eliminate the coefficient below the pivot.
 
-### Step 5: Solve the last variable directly.
-
-### Step 6: Solve remaining variables using previously computed values.
-
-### Step 7: Print the values of all unknowns.
 ## Program:
+
+/*
+Program to find the solution of a matrix using Gaussian Elimination.
+Developed by: kannan R
+RegisterNumber: 212224240072
+*/
+
 ```
 import numpy as np
 import sys
-#Reading number of unknowns
-n=int(input())
-a=np.zeros((n,n+1))
-x=np.zeros(n)
+n = int(input())
+a = np.zeros((n, n+1))
+x = np.zeros(n)
 for i in range(n):
-    for j in range(n+1):
-        a[i][j]=float(input())
-#applying gauss elimination
+    for j in range(n + 1):
+        a[i][j] = float(input())
 for i in range(n):
-    if a[i][j]==0.0:
-        sys.exit('Divide by zero detected!')
-    for j in range(i+1,n):
-        ratio=a[j][i]/a[i][i]
+    if a[i][j] == 0.0:
+        sys.exit("Divide by zero detected!")
+    for j in range(i +1, n):
+        ratio = a[j][i]/a[i][i]
         for k in range(n+1):
-            a[j][k]=a[j][k]-ratio*a[i][k]
-#back substitution
-x[n-1]=a[n-1][n]/a[n-1][n-1]
-for i in range(n-2,-1,-1):
-    x[i]=a[i][n]
-    for j in range(i+1,n):
-        x[i]=x[i] - a[i][j]*x[j]
-    x[i]=x[i]/a[i][i]
-#displaying solution
+            a[j][k] = a[j][k]- ratio * a[i][k]
+x[n-1] = a[n-1][n]/a[n-1][n-1]
+for i in range(n-2, -1,-1):
+    x[i] = a[i][n]
+    for j in range(i+1, n):
+        x[i] = x[i] - a[i][j] * x[j]
+    x[i] = x[i]/a[i][i]
+    
 for i in range(n):
-    print('X%d = %0.2f'%(i,x[i]),end=' ')
+    print('X%d = %0.2f' %(i,x[i]), end=" ")
 ```
-
 ## Output:
-![Screenshot 2025-05-13 173208](https://github.com/user-attachments/assets/ffc22119-02d3-405b-91be-3b2b450997b7)
 
+![image](https://github.com/user-attachments/assets/ae3c5ac6-e587-444c-b77f-406eca0cfc14)
 
 
 ## Result:
